@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpotMySpotify</title>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css">
+    <!--<link rel="icon" type="image/x-icon" href="favicon.ico" />-->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+     <style>
+
+#myDiv {
+  display: none;
+  /*text-align: center;*/
+}
+</style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader">
+
+</div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+  <base href="/">
+    <my-app></my-app>
+</div>
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script> 
+
+<script>
+function tog(v){return v?'addClass':'removeClass';} 
+$(document).on('input', '.clearable', function(){
+    $(this)[tog(this.value)]('x');
+}).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+}).on('touchstart click', '.onX', function( ev ){
+    ev.preventDefault();
+    $(this).removeClass('x onX').val('').change();
+});
+
+</script>
+  </head>
+
+  <body>
+    <div class="loader">
+    </div>
+
+    
+  </body>
+</html>
